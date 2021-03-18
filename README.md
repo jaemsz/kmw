@@ -13,7 +13,7 @@ that only 1 instance should be created.  I chose this option because I did not w
 tamper with my auto enrollment settings.
 
 ## Other thoughts
-* Record the times at which the classes became open and how long it took for them to fill to see which classes were most popular
+* Record the times when the class is posted and how long it took for them to fill to see which classes were most popular
 * Write a terraform script that could deploy the infrastructure programmatically.
-* Convert the python script to a cloud function
+* Convert the python script to a cloud function (classes do not get posted exactly 24 hours prior to the start of the class, so might need to kick off the function multiple times)
 * Support more users other than myself
