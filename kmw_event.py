@@ -69,8 +69,7 @@ class MyPTHub:
 
         if response.status_code == 200:
             state = json.loads(response.text)
-            if state['enroll'] == True:
-                return True
+            return state['enroll']
 
         return False
 
