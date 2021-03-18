@@ -36,7 +36,8 @@ USER_NAME = '<username>'
 PASSWORD = '<password>'
 
 STRENGTH_AND_CONDITIONING_WESTLA = 'Strength and Conditioning (West LA Outdoors - Parking Structure)'
-START_TIMES = ['T17:00:00', 'T18:00:00']
+START_TIMES = ['T10:30:00', 'T16:00:00', 'T17:00:00', 'T18:00:00']
+
 
 class MyPTHub:
     def __init__(self):
@@ -53,6 +54,26 @@ class MyPTHub:
         self.credit_data = dict()
         self.booking_data = dict()
         
+    #########################################
+    # Should we enroll?
+    #########################################
+    def should_enroll(self):
+        day_of_week = (datetime.datetime.today() + datetime.timedelta(days=1)).weekday()
+
+        headers = {
+            'user-agent' : 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:82.0) Gecko/20100101 Firefox/82.0',
+            'Accept' : 'application/json, text/plain, */*',
+        }
+
+        response = requests.get(f'https://kmw-api.wl.r.appspot.com/days/{day_of_week}', headers=headers)
+
+        if response.status_code == 200:
+            state = json.loads(response.text)
+            if state['enroll'] == True:
+                return True
+
+        return False
+
     #########################################
     # Login to mypthub.net
     #########################################
@@ -176,13 +197,17 @@ class MyPTHub:
         
 def main():
     pt = MyPTHub()
+
+    if not pt.should_enroll():
+        return 1
+
     if not pt.login(USER_NAME, PASSWORD):
         return 1
-        
+
     start_date = (datetime.datetime.today() + datetime.timedelta(days=1)).strftime('%Y-%m-%d')
     end_date = (datetime.datetime.today() + datetime.timedelta(days=2)).strftime('%Y-%m-%d')
     start_times = [start_date + st for st in START_TIMES]
-    
+
     event_found = False
     while not event_found:
         event_found = pt.lookup_event(STRENGTH_AND_CONDITIONING_WESTLA, start_times, start_date, end_date)
