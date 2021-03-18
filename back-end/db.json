@@ -1,0 +1,34 @@
+{
+    "days": [
+        {
+            "id": 0,
+            "name": "Monday @ 5:00PM",
+            "enroll": true
+        },
+        {
+            "id": 1,
+            "name": "Tuesday @ 4:00PM",
+            "enroll": true
+        },
+        {
+            "id": 2,
+            "name": "Wednesday @ 6:00PM",
+            "enroll": true
+        },
+        {
+            "id": 3,
+            "name": "Thursday @ 6:00PM",
+            "enroll": true
+        },
+        {
+            "id": 4,
+            "name": "Friday @ 5:00PM",
+            "enroll": true
+        },
+        {
+            "id": 5,
+            "name": "Saturday @ 10:30PM",
+            "enroll": false
+        }    
+    ]
+}
