@@ -9,11 +9,11 @@ I felt that it would be even better if I could create a front-end so that I coul
 good choice since it is very popular and I knew nothing about it.  But, the front-end needed a way to persist state that could be read by the python script, so I also
 ended up writing a JSON REST API using express.  The hardest part about writing the API was figuring out why it was responding with unpredictable values.  After some
 research, it turned out that the deployment created more than 1 instance to handle the requests.  The fix was simple.  Just had to update the app.yaml file to specify
-that only 1 instance should be created.  After making the necessary changes, everything seemed to work.  All that is left to do is add authentication, so that no one can
+that only 1 instance should be created.  I chose this option because I did not want to setup a database to persist and share state among the instances.  After making the necessary changes, everything seemed to work.  All that is left to do is add authentication, so that no one can
 tamper with my auto enrollment settings.
 
 ## Other thoughts
 * Record the times at which the classes became open and how long it took for them to fill to see which classes were most popular
-* Write a terraform script that could deploy the infrastructure prorammatically.
+* Write a terraform script that could deploy the infrastructure programmatically.
 * Convert the python script to a cloud function
 * Support more users other than myself
