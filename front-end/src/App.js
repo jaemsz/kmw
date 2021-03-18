@@ -8,8 +8,6 @@ function App() {
   const remoteApi = 'https://kmw-api.wl.r.appspot.com/days'
   const api = remoteApi
 
-  const enrollServer = false
-
   const [days, setDays] = useState([])
 
   useEffect(() => {
