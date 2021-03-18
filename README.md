@@ -15,4 +15,5 @@ tamper with my auto enrollment settings.
 ## Other thoughts
 * Record the times at which the classes became open and how long it took for them to fill to see which classes were most popular
 * Write a terraform script that could deploy the infrastructure prorammatically.
+* Convert the python script to a cloud function
 * Support more users other than myself
