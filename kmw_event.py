@@ -64,7 +64,6 @@ class MyPTHub:
         }
 
         day_of_week = (datetime.datetime.today() + datetime.timedelta(days=1)).weekday()
-        day_of_week -= 1
 
         response = requests.get(f'https://kmw-api.wl.r.appspot.com/days/{day_of_week}', headers=headers)
 
