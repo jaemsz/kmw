@@ -58,12 +58,13 @@ class MyPTHub:
     # Should we enroll?
     #########################################
     def should_enroll(self):
-        day_of_week = (datetime.datetime.today() + datetime.timedelta(days=1)).weekday()
-
         headers = {
             'user-agent' : 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:82.0) Gecko/20100101 Firefox/82.0',
             'Accept' : 'application/json, text/plain, */*',
         }
+
+        day_of_week = (datetime.datetime.today() + datetime.timedelta(days=1)).weekday()
+        day_of_week -= 1
 
         response = requests.get(f'https://kmw-api.wl.r.appspot.com/days/{day_of_week}', headers=headers)
 
